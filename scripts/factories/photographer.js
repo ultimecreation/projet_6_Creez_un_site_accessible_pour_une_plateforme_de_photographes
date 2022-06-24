@@ -17,7 +17,7 @@ function photographerFactory(data) {
 
         // create a tag and set attributes
         const a = document.createElement('a')
-        a.setAttribute('href',`photographer.html?id=${id}`)
+        a.setAttribute('href', `photographer.html?id=${id}`)
         a.setAttribute('focusable', true)
         a.setAttribute('aria-label', name)
 
@@ -49,7 +49,7 @@ function photographerFactory(data) {
         ul.appendChild(liPrice)
         article.appendChild(a);
         article.appendChild(ul);
-        
+
         return (article);
     }
     return { name, picture, getUserCardDOM }
