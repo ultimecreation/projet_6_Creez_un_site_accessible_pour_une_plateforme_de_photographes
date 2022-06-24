@@ -1,6 +1,6 @@
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
-    const data = await (await fetch('/data/photographers.json')).json()
+    const data = await (await fetch('https://ultimecreation.github.io/projet_6_Creez_un_site_accessible_pour_une_plateforme_de_photographes/data/photographers.json')).json()
     const { photographers } = data
 
     // et bien retourner le tableau photographers seulement une fois
