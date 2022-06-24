@@ -3,7 +3,7 @@ async function getPhotographers() {
     let storedData 
     fetch('data/photographers.json')
     .then(res => {return res.json()})
-    then(data => storedData = data)
+    .then(data => storedData = data)
 
     const { photographers } = storedData
 
