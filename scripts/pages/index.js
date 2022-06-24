@@ -26,4 +26,4 @@ async function init() {
 
 };
 
-init();
+window.addEventListener('DOMContentLoaded',()=> init());
