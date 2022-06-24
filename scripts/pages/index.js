@@ -1,11 +1,11 @@
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
-    let storedData 
+    let photographers 
     fetch('data/photographers.json')
     .then(res => {return res.json()})
-    .then(data => storedData = data)
+    .then(data => photographers = data.photographers)
 
-    const { photographers } = storedData
+    
 
     // et bien retourner le tableau photographers seulement une fois
     return ({
