@@ -10,7 +10,7 @@ function photographerFactory(data) {
         // create img tag and set attribute
         const img = document.createElement('img');
         img.setAttribute("src", picture)
-        img.setAttribute('alt',' ')
+        img.setAttribute('alt', ' ')
 
         // create h2
         const h2 = document.createElement('h2');
@@ -53,5 +53,52 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getUserBannerInfosDOM() {
+
+        // create h1
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
+
+        // create p tags,set attributes and text content
+        const pLocation = document.createElement('p')
+        pLocation.textContent = `${city}, ${country}`
+        const pTagline = document.createElement('p')
+        pTagline.textContent = tagline
+
+        // create li tags
+
+        const liName = document.createElement('li')
+        const liLocation = document.createElement('li')
+        const liTagline = document.createElement('li')
+
+        // create ul tag and set attribute
+        const ul = document.createElement('ul')
+
+        //create dom tree
+        liName.appendChild(h1)
+        liLocation.appendChild(pLocation);
+        liTagline.appendChild(pTagline);
+        ul.appendChild(liName)
+        ul.appendChild(liLocation)
+        ul.appendChild(liTagline);
+        return (ul)
+    }
+
+    function getUserBannerImgDOM() {
+        // create figure tag
+        const figure = document.createElement('figure');
+
+        // create img tag and set attribute
+        const img = document.createElement('img');
+        img.setAttribute("src", picture)
+        img.setAttribute('alt', ' ')
+
+        //create dom tree
+        figure.appendChild(img)
+
+        return figure
+    }
+
+    return { name, picture, getUserCardDOM, getUserBannerInfosDOM, getUserBannerImgDOM }
 }
