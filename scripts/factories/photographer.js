@@ -10,6 +10,7 @@ function photographerFactory(data) {
         // create img tag and set attribute
         const img = document.createElement('img');
         img.setAttribute("src", picture)
+        img.setAttribute('alt',' ')
 
         // create h2
         const h2 = document.createElement('h2');
