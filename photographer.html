@@ -4,6 +4,7 @@
 <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <link href="css/dropdown.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -21,12 +22,17 @@
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
         <div class="photographer-items">
-            <label for="sort">Trier par</label>
-            <select name="sort" id="sort">
-                <option class="option-style" value="popularity">Popularité</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
-            </select>
+
+            <ul class="dropdown-menu">
+                <li data-value="like"><p>Popularité </p><span>></span></li>
+                <li data-value="date"><p>Date</p></li>
+                <li data-value="title"><p>Titre</p></li>
+            </ul>
+
+
+
+
+
         </div>
     </main>
     <div id="contact_modal">
@@ -44,6 +50,7 @@
             </form>
         </div>
     </div>
+    <script src="scripts/utils/dropdown.js" defer></script>
     <script src="scripts/factories/photographer.js" defer></script>
     <script src="scripts/pages/photographer.js" defer></script>
     <script src="scripts/utils/contactForm.js" defer></script>
