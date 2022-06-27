@@ -32,19 +32,42 @@ h1 {
 }
 
 .photographer_section article {
+    text-align: center;
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.photographer_section article a{
+    text-decoration: none;
+}
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+}
+.photographer_section article ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+.photographer_section article li p{
+    margin: 0;
+}
+.photographer_section article ul li:nth-of-type(1) {
+    color:#901C1C;
+}
+.photographer_section article ul li:nth-of-type(2) {
+    font-weight: bold;
+}
+.photographer_section article ul li:nth-of-type(3) {
+    color:grey;
 }
