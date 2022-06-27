@@ -3,9 +3,39 @@
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+.photograph-header ul {
+    padding: 0;
+    list-style: none; position: relative;
+    top: -20px;
+}
+.photograph-header ul li:nth-of-type(1) {
+    font-size: 2.5rem;
+    margin: 0;
+   
+}
+.photograph-header ul li:nth-of-type(2) {
+    color:#901C1C;
+    font-size: 1.8rem;
+}
+.photograph-header ul li:nth-of-type(3) {
+    color:grey;
+    font-size: 1.4rem;
+}
+.photograph-header ul li h1,.photograph-header ul li:nth-of-type(2) p {
+    margin: 0;
+}
+.photograph-header ul li h1 {
+    color: #D3573C;
+}
+.photograph-header img {
+   border-radius: 50%;
 }
 
 .contact_button {
@@ -19,6 +49,10 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+.contact_button:hover {
+    background: #D3573C;
+    color: black;
 }
 
 .modal {
