@@ -26,4 +26,15 @@ async function init() {
 
 };
 
+async function getMedias() {
+    // Penser à remplacer par les données récupérées dans le json
+    const data = await (await fetch('mydata/photographers.json')).json()
+    const { media } = data
+
+    // et bien retourner le tableau photographers seulement une fois
+    return ({
+        media: [...media]
+    })
+}
+
 init();
