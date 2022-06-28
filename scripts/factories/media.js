@@ -7,7 +7,7 @@ function mediaFactory(data,type){
 function ImageMedia(data){
     const { id, title, image, likes, date, price } = data;
 
-    const mediaPath = `assets/images/${image}`;
+    const mediaPath = `assets/media/${id}/${image}`;
 
     function getMediaCardDOM() {
        
@@ -20,7 +20,7 @@ function ImageMedia(data){
 function VideoMedia(data){
     const { id, title, video, likes, date, price } = data;
 
-    const mediaPath = `assets/videos/${video}`;
+    const mediaPath = `assets/media/${id}/${video}`;
 
     function getMediaCardDOM() {
        
