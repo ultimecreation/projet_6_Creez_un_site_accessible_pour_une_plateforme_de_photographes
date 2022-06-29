@@ -1,32 +1,51 @@
-function mediaFactory(data,type){
-    if(type === 'video') return new VideoMedia(data)
-    if(type === 'image') return new ImageMedia(data)
+function mediaFactory(data, type) {
+    if (type === 'video') return new VideoMedia(data)
+    if (type === 'image') return new ImageMedia(data)
     else throw 'Unknown type'
 }
 
-function ImageMedia(data){
-    const { id, title, image, likes, date, price } = data;
-
-    const mediaPath = `assets/media/${id}/${image}`;
+function ImageMedia(data) {
+    const { photographerId, title, image, likes } = data;
+    const mediaPath = `/assets/media/${photographerId}/${image}`;
 
     function getMediaCardDOM() {
-       
 
-        return (article);
+
+        const content = `
+        <figure  >
+            <img src="${mediaPath}" alt="${title}" width=350 height=300>
+            <figcaption>
+                <span>
+                    ${title}
+                </span>
+                <span>
+                    ${likes} 
+                    <i class="fa fa-heart"></i>
+                </span>
+            </figcaption>
+        </figure>
+        `
+
+
+
+        return content;
     }
 
-    return { id, title, mediaPath, likes, date, price,getMediaCardDOM }
+    return { photographerId, title, mediaPath, likes, getMediaCardDOM }
 }
-function VideoMedia(data){
-    const { id, title, video, likes, date, price } = data;
-
-    const mediaPath = `assets/media/${id}/${video}`;
+function VideoMedia(data) {
+    const { photographerId, title, video, likes } = data;
+    let image
+    const mediaPath = `assets/media/${photographerId}/${video}`;
 
     function getMediaCardDOM() {
-       
-
-        return (article);
+        const content = `
+            <video class="videos" width="350" height="300" controls preload="metadata">
+                <source src="${mediaPath}#t=0.1" type="video/mp4">
+            </video>
+        `
+        return content;
     }
 
-    return { id, title, mediaPath, likes, date, price,getMediaCardDOM }
+    return { photographerId, title, mediaPath, likes, getMediaCardDOM }
 }

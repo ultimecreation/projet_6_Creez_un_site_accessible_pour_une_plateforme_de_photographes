@@ -1,5 +1,5 @@
 
-async function getMedias() {
+async function getMedia() {
     // Penser à remplacer par les données récupérées dans le json
     const data = await (await fetch('mydata/photographers.json')).json()
     const { media } = data
@@ -10,9 +10,9 @@ async function getMedias() {
     })
 }
 
-async function getMediasByPhotographerId(id) {
+async function getMediaByPhotographerId(id) {
     // Penser à remplacer par les données récupérées dans le json
-    const data = await getMedias()
+    const data = await getMedia()
     const  media  = data.media.filter(media =>  media.photographerId == id)
 
     // et bien retourner le tableau photographers seulement une fois
@@ -23,21 +23,42 @@ async function getMediasByPhotographerId(id) {
 
 async function displayData(media) {
     const mediaSection = document.querySelector(".media_section");
-
+    let output = ''
+    let index = 0
+    // initialize the first row
+    output += '<div class="row">'
     media.forEach((singleMedia) => {
-        const mediaType = 
-        console.log(singleMedia)
-        return
-        const mediaModel = mediaFactory(singleMedia);
-        const mediaCardDOM = mediaModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+
+        const mediaType = typeof singleMedia.image !== 'undefined' ? 'image' : 'video'
+       
+        const mediaModel = mediaFactory(singleMedia,mediaType);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        if(index % 3 === 0 ) output+= '</div><div class="row">'
+         output += mediaCardDOM;
+        index++
     });
+    mediaSection.innerHTML = output
 };
 
 async function init() {
-    // Récupère les datas des photographes
-    const { media } = await getMediasByPhotographerId(243);
+    const urlParams = new URLSearchParams(window.location.search)
+    const userId = urlParams.get('id')
+    const { media } = await getMediaByPhotographerId(userId);
     displayData(media);
-
+   
+    
 };
-init();
+init()
+// .then(()=>{ 
+//     console.log("dom loaded") 
+//     const videos = document.querySelectorAll('video') 
+//     videos.forEach(video => {
+//         video.addEventListener('DOMContentLoaded',()=> {
+            
+            
+        
+//             })
+//     })
+    
+// });
+

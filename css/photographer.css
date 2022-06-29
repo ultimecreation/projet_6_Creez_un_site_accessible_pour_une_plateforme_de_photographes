@@ -8,7 +8,6 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 313px;
-    margin: 0 100px;
 }
 
 .photograph-header ul {
@@ -65,20 +64,9 @@
     color: black;
 }
 
-.photographer-items {
-    margin: 0 100px;
-}
 
-.photographer-items select {
-    background: #901C1C;
-    padding: .5rem 0.25rem;
-    color: white;
-}
 
-.photographer-items select .option-style {
-    padding: 30px;
-    background: 000;
-}
+
 
 .modal {
     border-radius: 5px;
@@ -132,4 +120,12 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+.media_section .row{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+.media_section .row figure,.media_section .row video{
+    margin: 1rem 0;
 }
