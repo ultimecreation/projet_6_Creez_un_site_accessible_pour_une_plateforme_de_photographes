@@ -129,3 +129,10 @@ form input {
 .media_section .row figure,.media_section .row video{
     margin: 1rem 0;
 }
+.media_section .row figure figcaption,.media_section .row .video+.infos{
+   display: flex;
+   justify-content: space-between;
+}
+input{
+    padding: 0;
+}

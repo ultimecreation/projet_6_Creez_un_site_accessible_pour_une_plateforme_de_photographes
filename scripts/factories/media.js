@@ -40,9 +40,17 @@ function VideoMedia(data) {
 
     function getMediaCardDOM() {
         const content = `
-            <video class="videos" width="350" height="300" controls preload="metadata">
-                <source src="${mediaPath}#t=0.1" type="video/mp4">
-            </video>
+        <div>
+            <div style="width: 350px; height:300px; overflow: hidden;" class="video">
+                <video class="videos"  height="100%" controls preload="metadata">
+                    <source src="${mediaPath}#t=0.1" type="video/mp4">
+                </video>
+            </div>
+            <div class="infos">
+                <span>${title}</span>
+                <span>${likes}</span>
+            </div>
+        </div>
         `
         return content;
     }
