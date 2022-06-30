@@ -43,7 +43,7 @@ async function displayData(media) {
 async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
-    const { media } = await getMediaByPhotographerId(userId);
+    const { media } = await getMediaByPhotographerId(userId,filter=null);
     displayData(media);
    
     

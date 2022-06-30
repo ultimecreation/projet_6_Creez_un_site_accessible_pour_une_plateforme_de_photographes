@@ -20,7 +20,7 @@ function ImageMedia(data) {
                 </span>
                 <span>
                     ${likes} 
-                    <i class="fa fa-heart"></i>
+                    <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/>
                 </span>
             </figcaption>
         </figure>
@@ -40,15 +40,15 @@ function VideoMedia(data) {
 
     function getMediaCardDOM() {
         const content = `
-        <div>
-            <div style="width: 350px; height:300px; overflow: hidden;" class="video">
+        <div class="video">
+            <div class="video-container">
                 <video class="videos"  height="100%" controls preload="metadata">
                     <source src="${mediaPath}#t=0.1" type="video/mp4">
                 </video>
             </div>
             <div class="infos">
                 <span>${title}</span>
-                <span>${likes}</span>
+                <span>${likes} <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/></span>
             </div>
         </div>
         `
