@@ -10,11 +10,21 @@ async function getMedia() {
     })
 }
 
-async function getMediaByPhotographerId(id) {
+async function getMediaByPhotographerId(id,filter=null) {
     // Penser à remplacer par les données récupérées dans le json
     const data = await getMedia()
     const  media  = data.media.filter(media =>  media.photographerId == id)
-
+    
+    if(filter === 'likes') {
+        return media.sort((a, b) => b.likes - a.likes)
+    }
+    if(filter === 'date') {
+        return media.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
+    }
+    if(filter === 'title') {
+        return media.sort((a, b) => {return a.title.toLowerCase().localeCompare(b.title.toLowerCase())})
+    }
+  
     // et bien retourner le tableau photographers seulement une fois
     return ({
         media: [...media]
@@ -43,7 +53,7 @@ async function displayData(media) {
 async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
-    const { media } = await getMediaByPhotographerId(userId,filter=null);
+    const { media } = await getMediaByPhotographerId(userId);
     displayData(media);
    
     
