@@ -1,7 +1,9 @@
 #contact_modal {
     display: none;
 }
-
+#main{
+    position: relative;
+}
 .photograph-header {
     display: flex;
     justify-content: space-between;
@@ -191,4 +193,23 @@ form input {
 .media_section .heart-icon{
     height: 14px;
     width: 14px;
+}
+.price-and-likes{
+    max-width:376px;
+    position: fixed;
+    width: 100%;
+    left: 68%;
+    bottom:0;
+    text-align: right;
+}
+.price-and-likes-container{
+   display: flex;
+   justify-content: space-between;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    background: #D3573C;
+}
+#dark-heart{
+    width:17px;
+    height:17px;
 }

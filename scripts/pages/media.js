@@ -10,18 +10,18 @@ async function getMedia() {
     })
 }
 
-async function getMediaByPhotographerId(id,filter=null) {
+async function getMediaByPhotographerId(id,sortBy=null) {
     // Penser à remplacer par les données récupérées dans le json
     const data = await getMedia()
     const  media  = data.media.filter(media =>  media.photographerId == id)
     
-    if(filter === 'likes') {
+    if(sortBy === 'likes') {
         return media.sort((a, b) => b.likes - a.likes)
     }
-    if(filter === 'date') {
+    if(sortBy === 'date') {
         return media.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
     }
-    if(filter === 'title') {
+    if(sortBy === 'title') {
         return media.sort((a, b) => {return a.title.toLowerCase().localeCompare(b.title.toLowerCase())})
     }
   
@@ -31,6 +31,15 @@ async function getMediaByPhotographerId(id,filter=null) {
     })
 }
 
+async function displayTotalLikesCountByPhotographerId(userId){
+    const { media } = await getMediaByPhotographerId(userId);
+    const totalLikesCount =  media.reduce((total, currentMedia)=>{
+        return total += currentMedia.likes
+    },0)
+
+    document.querySelector('#total-likes-count').textContent = totalLikesCount
+    
+}
 async function displayData(media) {
     const mediaSection = document.querySelector(".media_section");
     let output = ''
@@ -43,7 +52,7 @@ async function displayData(media) {
        
         const mediaModel = mediaFactory(singleMedia,mediaType);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
-        if(index % 3 === 0 ) output+= '</div><div class="row">'
+        if( index>0 && index % 3 == 0 ) output+= '</div><div class="row">'
          output += mediaCardDOM;
         index++
     });
@@ -54,6 +63,7 @@ async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
     const { media } = await getMediaByPhotographerId(userId);
+    displayTotalLikesCountByPhotographerId(userId)
     displayData(media);
    
     

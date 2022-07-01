@@ -19,10 +19,10 @@
             </a>
         </header>
         <main id="main">
-            <div class="photograph-header">
+            <header class="photograph-header">
                 <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            </div>
-            <div class="photographer-filters">
+            </header>
+            <section class="photographer-filters">
                 <div>Trier par</div>
                 <ul class="dropdown-menu">
                     <li data-value="likes">
@@ -35,8 +35,21 @@
                         <p>Titre</p>
                     </li>
                 </ul>
-            </div>
+            </section>
             <section class="media_section"></section>
+            <section class="price-and-likes">
+                <div class="price-and-likes-container">
+                    <div class="total-likes">
+                        <span id="total-likes-count">
+                            
+                        </span>
+                        <img src="/assets/icons/dark-heart.png" alt="dark heart" id="dark-heart">
+                    </div>
+                    <div class="price-per-day">
+                        300€ / jour
+                    </div>
+                </div>
+            </section>
         </main>
         <div id="contact_modal">
             <div class="modal">

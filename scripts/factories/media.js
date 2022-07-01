@@ -5,12 +5,10 @@ function mediaFactory(data, type) {
 }
 
 function ImageMedia(data) {
-    const { photographerId, title, image, likes } = data;
+    const { id, photographerId, title, image, likes } = data;
     const mediaPath = `/assets/media/${photographerId}/${image}`;
 
     function getMediaCardDOM() {
-
-
         const content = `
         <figure  >
             <img src="${mediaPath}" alt="${title}" width=350 height=300>
@@ -18,23 +16,20 @@ function ImageMedia(data) {
                 <span>
                     ${title}
                 </span>
-                <span>
-                    ${likes} 
+                <div>
+                    <span class="likes" data-media-id="${id}">${likes} </span>
                     <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/>
-                </span>
+                </div>
             </figcaption>
         </figure>
         `
-
-
-
         return content;
     }
 
     return { photographerId, title, mediaPath, likes, getMediaCardDOM }
 }
 function VideoMedia(data) {
-    const { photographerId, title, video, likes } = data;
+    const { id, photographerId, title, video, likes } = data;
     let image
     const mediaPath = `assets/media/${photographerId}/${video}`;
 
@@ -48,7 +43,10 @@ function VideoMedia(data) {
             </div>
             <div class="infos">
                 <span>${title}</span>
-                <span>${likes} <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/></span>
+                <div>
+                    <span class="likes" data-media-id="${id}">${likes} </span>
+                    <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/>
+                </div>
             </div>
         </div>
         `
