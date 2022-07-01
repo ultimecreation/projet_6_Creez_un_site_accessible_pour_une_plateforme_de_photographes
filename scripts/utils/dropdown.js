@@ -9,3 +9,6 @@ const handleSort = (e) => {
 }
 
 dropdown.addEventListener('click',handleSort)
+
+
+ 

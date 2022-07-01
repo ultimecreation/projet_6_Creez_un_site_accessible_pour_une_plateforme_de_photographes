@@ -154,7 +154,6 @@ form input {
 
 .media_section {
     position: relative;
-    z-index: -1;
 }
 
 .media_section .row {

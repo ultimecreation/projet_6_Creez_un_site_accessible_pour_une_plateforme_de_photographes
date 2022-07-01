@@ -32,7 +32,7 @@ async function getMediaByPhotographerId(id,sortBy=null) {
 }
 
 async function displayTotalLikesCountByPhotographerId(userId){
-    const { media } = await getMediaByPhotographerId(userId);
+    const {media} = await getMediaByPhotographerId(userId) 
     const totalLikesCount =  media.reduce((total, currentMedia)=>{
         return total += currentMedia.likes
     },0)
@@ -40,15 +40,18 @@ async function displayTotalLikesCountByPhotographerId(userId){
     document.querySelector('#total-likes-count').textContent = totalLikesCount
     
 }
-async function displayData(media) {
+
+async function displayData(userId) {
+    const {media} = await getMediaByPhotographerId(userId) 
     const mediaSection = document.querySelector(".media_section");
     let output = ''
     let index = 0
     // initialize the first row
     output += '<div class="row">'
-    media.forEach((singleMedia) => {
-
-        const mediaType = typeof singleMedia.image !== 'undefined' ? 'image' : 'video'
+    
+    media.map((singleMedia) => {
+        //console.log('test',singleMedia)
+        const mediaType = typeof singleMedia.image != 'undefined' ? 'image' : 'video'
        
         const mediaModel = mediaFactory(singleMedia,mediaType);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
@@ -59,26 +62,25 @@ async function displayData(media) {
     mediaSection.innerHTML = output
 };
 
+async function handleClicksOnLikeIcons(){
+    const likeButtons = document.querySelectorAll('.heart-icon')
+    likeButtons.forEach(likeBtn => {
+        likeBtn.addEventListener('click',async (e)=> {
+            let likesCount = e.target.previousElementSibling 
+            let totalLikesCount = document.querySelector('#total-likes-count')
+            likesCount.textContent = parseInt(likesCount.textContent) + 1
+            totalLikesCount.textContent = parseInt(totalLikesCount.textContent) +1
+            console.log('click')
+        })
+})
+}
 async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
     const { media } = await getMediaByPhotographerId(userId);
-    displayTotalLikesCountByPhotographerId(userId)
-    displayData(media);
    
-    
+    await displayData(userId)
+    await displayTotalLikesCountByPhotographerId(userId)
+    await handleClicksOnLikeIcons()
 };
 init()
-// .then(()=>{ 
-//     console.log("dom loaded") 
-//     const videos = document.querySelectorAll('video') 
-//     videos.forEach(video => {
-//         video.addEventListener('DOMContentLoaded',()=> {
-            
-            
-        
-//             })
-//     })
-    
-// });
-
