@@ -12,16 +12,21 @@ async function getMedia() {
 
 async function getMediaByPhotographerId(id,sortBy=null) {
     // Penser à remplacer par les données récupérées dans le json
+    const urlParams = new URLSearchParams(window.location.search)
+    const userId = urlParams.get('id')
     const data = await getMedia()
-    const  media  = data.media.filter(media =>  media.photographerId == id)
-    
+    const  media  =  data.media.filter(media =>  media.photographerId == id)
+   
     if(sortBy === 'likes') {
+        displayTotalLikesCountByPhotographerId(userId)
         return media.sort((a, b) => b.likes - a.likes)
     }
     if(sortBy === 'date') {
+        displayTotalLikesCountByPhotographerId(userId)
         return media.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
     }
     if(sortBy === 'title') {
+        displayTotalLikesCountByPhotographerId(userId)
         return media.sort((a, b) => {return a.title.toLowerCase().localeCompare(b.title.toLowerCase())})
     }
   
@@ -41,18 +46,16 @@ async function displayTotalLikesCountByPhotographerId(userId){
     
 }
 
-async function displayData(userId) {
-    const {media} = await getMediaByPhotographerId(userId) 
+async function displayData(media) {
     const mediaSection = document.querySelector(".media_section");
+    mediaSection.innerHTML = ''
     let output = ''
     let index = 0
     // initialize the first row
     output += '<div class="row">'
     
-    media.map((singleMedia) => {
-        //console.log('test',singleMedia)
+    media.forEach((singleMedia) => {
         const mediaType = typeof singleMedia.image != 'undefined' ? 'image' : 'video'
-       
         const mediaModel = mediaFactory(singleMedia,mediaType);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         if( index>0 && index % 3 == 0 ) output+= '</div><div class="row">'
@@ -63,23 +66,22 @@ async function displayData(userId) {
 };
 
 async function handleClicksOnLikeIcons(){
-    const likeButtons = document.querySelectorAll('.heart-icon')
-    likeButtons.forEach(likeBtn => {
-        likeBtn.addEventListener('click',async (e)=> {
+    const mediaSection = document.querySelector('.media_section')
+    mediaSection.addEventListener('click', e => {
+        if(e.target.classList.contains('heart-icon')){
             let likesCount = e.target.previousElementSibling 
             let totalLikesCount = document.querySelector('#total-likes-count')
             likesCount.textContent = parseInt(likesCount.textContent) + 1
             totalLikesCount.textContent = parseInt(totalLikesCount.textContent) +1
-            console.log('click')
-        })
-})
+        }
+    })
 }
 async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
     const { media } = await getMediaByPhotographerId(userId);
    
-    await displayData(userId)
+    await displayData(media)
     await displayTotalLikesCountByPhotographerId(userId)
     await handleClicksOnLikeIcons()
 };
