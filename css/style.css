@@ -1,15 +1,18 @@
 @import url("photographer.css");
-html{
-    max-width:1240px;
+
+html {
+    max-width: 1240px;
     margin: 0 auto;
 }
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-.container{
+
+.container {
     margin: 0 100px;
-    max-width:1240px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 

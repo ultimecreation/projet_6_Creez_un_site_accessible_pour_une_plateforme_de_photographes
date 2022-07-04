@@ -41,7 +41,7 @@
                 <div class="price-and-likes-container">
                     <div class="total-likes">
                         <span id="total-likes-count">
-                            
+
                         </span>
                         <img src="/assets/icons/dark-heart.png" alt="dark heart" id="dark-heart">
                     </div>
@@ -60,7 +60,7 @@
                     </div>
                     <img src="assets/icons/close.svg" onclick="closeModal()" />
                 </header>
-                <div id="form-msg-container" ></div>
+                <div id="form-msg-container"></div>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="firstname">Prénom</label>
@@ -82,14 +82,21 @@
                 </form>
             </div>
         </div>
+        <div id="lightbox_modal">
+            <a class="prev" onclick="switchSlide(-1)">&#10094;</a>
+            <div id="lightbox_content"></div>
+            <a class="next" onclick="switchSlide(1)">&#10095;</a>
+            <img src="/assets/icons/close-btn.png" alt="close button" class="close-btn">
+        </div>
     </div>
-    
+
     <script src="scripts/utils/contactForm.js" defer></script>
     <script src="scripts/factories/photographer.js" defer></script>
     <script src="scripts/factories/media.js" defer></script>
     <script src="scripts/pages/media.js" defer></script>
     <script src="scripts/pages/photographer.js" defer></script>
     <script src="scripts/utils/dropdown.js" defer></script>
+    <script src="scripts/utils/lightbox.js" defer></script>
 </body>
 
 </html>
