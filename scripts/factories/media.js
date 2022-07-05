@@ -11,14 +11,14 @@ function ImageMedia(data) {
     function getMediaCardDOM(index) {
         const content = `
             <figure >
-                <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})">
+                <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
                 <figcaption>
                     <span>
                         ${title}
                     </span>
                     <div>
                         <span class="likes" data-media-id="${id}">${likes} </span>
-                        <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/>
+                        <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
                     </div>
                 </figcaption>
             </figure>
@@ -29,7 +29,7 @@ function ImageMedia(data) {
     function getMediaLightboxCardDOM() {
         const content = `
             <figure class="lightbox-item">
-                <img src="${mediaPath}" alt="${title}" width=350 height=300>
+                <img src="${mediaPath}" alt="${title}" width=350 height=300 >
                 <figcaption>
                     <span>
                         ${title}
@@ -52,7 +52,7 @@ function VideoMedia(data) {
         const content = `
         <div class="video" >
             <div class="video-container">
-                <video class="videos"  height="100%" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})">
+                <video class="videos"  height="100%" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
                     <source src="${mediaPath}#t=0.1" type="video/mp4">
                 </video>
             </div>
@@ -60,7 +60,7 @@ function VideoMedia(data) {
                 <span>${title}</span>
                 <div>
                     <span class="likes" data-media-id="${id}">${likes} </span>
-                    <img src="assets/icons/heart.png" alt="heart" class="heart-icon"/>
+                    <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@ function VideoMedia(data) {
         const content = `
         <div class="lightbox-item video">
             <div class="video-container">
-                <video class="videos"  height="100%" controls preload="metadata">
+                <video class="videos"  height="100%" controls preload="metadata" aria-label="${title}">
                     <source src="${mediaPath}#t=0.1" type="video/mp4">
                 </video>
             </div>

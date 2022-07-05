@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -20,18 +20,18 @@
         </header>
         <main id="main">
             <header class="photograph-header">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                <button class="contact_button" onclick="displayModal()" aria-label="Contact Me" >Contactez-moi</button>
             </header>
             <section class="photographer-filters">
-                <div>Trier par</div>
-                <ul class="dropdown-menu">
-                    <li data-value="likes">
+                <div id="listboxlabel" role="button">Trier par</div>
+                <ul class="dropdown-menu" role="listbox" tabindex="0" id="listbox1" aria-labelledby="listboxlabel" aria-activedescendant="listbox1-1"  aria-haspopup="listbox" aria-expanded>
+                    <li data-value="likes" role="option" id="listbox1-1" class="selected" aria-selected="false">
                         <p>Popularité </p><span>></span>
                     </li>
-                    <li data-value="date">
+                    <li data-value="date" role="option" id="listbox1-2" class="selected" aria-selected="false">
                         <p>Date</p>
                     </li>
-                    <li data-value="title">
+                    <li data-value="title" role="option" id="listbox1-3" class="selected" aria-selected="false">
                         <p>Titre</p>
                     </li>
                 </ul>
@@ -51,14 +51,14 @@
                 </div>
             </section>
         </main>
-        <div id="contact_modal">
+        <div id="contact_modal" aria-labelledby="contact-text">
             <div class="modal">
                 <header>
                     <div>
-                        <h2>Contactez-moi</h2>
-                        <p id="photographer-name"></p>
+                        <h1 id="contact-text">Contactez-moi<p id="photographer-name"></p></h1>
+                        
                     </div>
-                    <img src="assets/icons/close.svg" onclick="closeModal()" />
+                    <img src="assets/icons/close.svg" onclick="closeModal()" alt="" aria-label="Close Contact form"  />
                 </header>
                 <div id="form-msg-container"></div>
                 <form id="contactForm">
@@ -78,15 +78,20 @@
                         <label for="message">Votre message</label>
                         <textarea name="message" id="message" cols="100" rows="10"></textarea>
                     </div>
-                    <button class="contact_button" id="submitBtn">Envoyer</button>
+                    <button class="contact_button" id="submitBtn" aria-label="Send">Envoyer</button>
                 </form>
             </div>
         </div>
         <div id="lightbox_modal">
-            <a class="prev" onclick="switchSlide(-1)">&#10094;</a>
+            <a class="prev" onclick="switchSlide(-1)" aria-label="Previous image">
+                <img src="/assets/icons/arrow-left.png" alt="Previous image">
+            </a>
+
             <div id="lightbox_content"></div>
-            <a class="next" onclick="switchSlide(1)">&#10095;</a>
-            <img src="/assets/icons/close-btn.png" alt="close button" class="close-btn">
+            <a class="next" onclick="switchSlide(1)" aria-label="Next image">
+                <img src="/assets/icons/arrow-right.png" alt="Next image">
+            </a>
+            <img src="/assets/icons/close-btn.png" alt="close button" class="close-btn"  aria-label="Close dialog">
         </div>
     </div>
 

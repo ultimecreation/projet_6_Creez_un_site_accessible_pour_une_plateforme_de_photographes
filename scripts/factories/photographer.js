@@ -20,7 +20,6 @@ function photographerFactory(data) {
         const a = document.createElement('a')
         a.setAttribute('href', `photographer.html?id=${id}`)
         a.setAttribute('focusable', true)
-        a.setAttribute('aria-label', name)
 
         // create p tags,set attributes and text content
         const pLocation = document.createElement('p')
@@ -40,8 +39,8 @@ function photographerFactory(data) {
         const liPrice = document.createElement('li')
 
         // create article dom tree
-        a.appendChild(img)
         a.appendChild(h2)
+        a.appendChild(img)
         liLocation.appendChild(pLocation);
         liTagline.appendChild(pTagline);
         liPrice.appendChild(pPrice);
@@ -93,6 +92,7 @@ function photographerFactory(data) {
         const img = document.createElement('img');
         img.setAttribute("src", picture)
         img.setAttribute('alt', '')
+        img.setAttribute('aria-label', name)
 
         //create dom tree
         figure.appendChild(img)

@@ -132,7 +132,7 @@
     height: 2.5rem;
 }
 
-.modal header h2,
+.modal header h1,
 .modal header p {
     font-size: 3.5rem;
     font-weight: normal;
@@ -286,6 +286,12 @@ form textarea {
     color: #901C1C;
     font-weight: bold;
     cursor: pointer;
+}
+#lightbox_modal a img {
+    
+   top: 0;
+   height: 30px;
+   width: 30px;
 }
 
 #lightbox_modal a.prev {
