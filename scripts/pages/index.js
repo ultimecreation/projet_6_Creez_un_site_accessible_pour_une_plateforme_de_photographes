@@ -1,17 +1,30 @@
+/**
+ * get the photographers data 
+ *
+ * @return  {[object]}  
+ */
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
+    // fetch and extract chunk of data from json file
     const data = await (await fetch('mydata/photographers.json')).json()
     const { photographers } = data
 
-    // et bien retourner le tableau photographers seulement une fois
     return ({
         photographers: [...photographers]
     })
 }
 
+/**
+ * display the list of photographers
+ *
+ * @param   {[object]}  photographers  
+ *
+ * @return  {void}       
+ */
 async function displayData(photographers) {
+    // get the dom container for photographers
     const photographersSection = document.querySelector(".photographer_section");
 
+    // loop through photographers and generate the html to be added to the dom container for photographers
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
@@ -19,19 +32,22 @@ async function displayData(photographers) {
     });
 };
 
+/**
+ * initialization|insert html string on page load
+ *
+ * @return  {void} 
+ */
 async function init() {
-    // Récupère les datas des photographes
+    //get photographers data
     const { photographers } = await getPhotographers();
     displayData(photographers);
-
 };
 
 async function getMedias() {
-    // Penser à remplacer par les données récupérées dans le json
+    // fetch and extract chunk of data from json file
     const data = await (await fetch('mydata/photographers.json')).json()
     const { media } = data
 
-    // et bien retourner le tableau photographers seulement une fois
     return ({
         media: [...media]
     })

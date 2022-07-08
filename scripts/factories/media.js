@@ -1,13 +1,35 @@
+/**
+ * create a Video or Image object
+ *
+ * @param   {object}  data  
+ * @param   {string}  type  type of object to create
+ *
+ * @return  {object|Error}   
+ */
 function mediaFactory(data, type) {
     if (type === 'video') return new VideoMedia(data)
     if (type === 'image') return new ImageMedia(data)
     else throw 'Unknown type'
 }
 
+/**
+ * create an Image object containing properties and methods
+ *
+ * @param   {object}  data  
+ *
+ * @return  {object}  
+ */
 function ImageMedia(data) {
     const { id, photographerId, title, image, likes } = data;
     const mediaPath = `/assets/media/${photographerId}/${image}`;
 
+    /**
+     * generate the html for 1 image to be inserted in the dom
+     *
+     * @param   {integer}  index  current image index to be displayed in the lightbox
+     *
+     * @return  {string}   
+     */
     function getMediaCardDOM(index) {
         const content = `
             <figure >
@@ -26,6 +48,11 @@ function ImageMedia(data) {
         return content;
     }
 
+    /**
+     * generate the html string for 1 image to be inserted in the lightbox slideshow
+     *
+     * @return  {string}  
+     */
     function getMediaLightboxCardDOM() {
         const content = `
             <figure class="lightbox-item">
@@ -44,10 +71,24 @@ function ImageMedia(data) {
     return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM }
 }
 
+/**
+ * create a Video object containing properties and methods
+ *
+ * @param   {object}  data  
+ *
+ * @return  {object}  
+ */
 function VideoMedia(data) {
     const { id, photographerId, title, video, likes } = data;
     const mediaPath = `assets/media/${photographerId}/${video}`;
 
+    /**
+     * generate the html for 1 video to be inserted in the dom
+     *
+     * @param   {integer}  index  current video index to be displayed in the lightbox
+     *
+     * @return  {string}   
+     */
     function getMediaCardDOM(index) {
         const content = `
         <div class="video" >
@@ -67,6 +108,12 @@ function VideoMedia(data) {
         `
         return content;
     }
+
+    /**
+     * generate the html string for 1 video to be inserted in the lightbox slideshow
+     *
+     * @return  {string}  
+     */
     function getMediaLightboxCardDOM() {
         const content = `
         <div class="lightbox-item video">

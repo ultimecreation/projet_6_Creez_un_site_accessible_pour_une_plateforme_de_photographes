@@ -1,8 +1,20 @@
+/**
+ * create a Photographer object
+ *
+ * @param   {object}  data  
+ *
+ * @return  {object}   
+ */
 function photographerFactory(data) {
     const { id, name, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
+    /**
+     * generate the html string to be inserted in the DOM
+     *
+     * @return  {HTMLElement}  
+     */
     function getUserCardDOM() {
         // create article tag
         const article = document.createElement('article');
@@ -53,6 +65,11 @@ function photographerFactory(data) {
         return (article);
     }
 
+    /**
+     * generate the html string to be inserted n the DOM to display 1 photographer infos
+     *
+     * @return  {HTMLElement}  
+     */
     function getUserBannerInfosDOM() {
 
         // create h1
@@ -66,7 +83,6 @@ function photographerFactory(data) {
         pTagline.textContent = tagline
 
         // create li tags
-
         const liName = document.createElement('li')
         const liLocation = document.createElement('li')
         const liTagline = document.createElement('li')
@@ -81,10 +97,17 @@ function photographerFactory(data) {
         ul.appendChild(liName)
         ul.appendChild(liLocation)
         ul.appendChild(liTagline);
+
         return (ul)
     }
 
+    /**
+     * generate the html string to be inserted in the DOM to display 1 photographer image
+     *
+     * @return  {HTMLElement}  
+     */
     function getUserBannerImgDOM() {
+
         // create figure tag
         const figure = document.createElement('figure');
 

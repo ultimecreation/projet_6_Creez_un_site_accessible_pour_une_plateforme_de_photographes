@@ -1,6 +1,13 @@
+// get html elements
 const form = document.querySelector('#contactForm')
 const formMsgContainer = document.querySelector(`#form-msg-container`)
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+/**
+ * display the contact modal
+ *
+ * @return  {void}  
+ */
 function displayModal() {
     resetFormMsgContainer()
     const modal = document.getElementById("contact_modal");
@@ -11,17 +18,32 @@ function displayModal() {
     photographerNameInModal.textContent = photographerNameInHeader.textContent
 }
 
+/**
+ * close the contact modal
+ *
+ * @return  {void}  
+ */
 function closeModal() {
     resetFormMsgContainer()
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
 
+/**
+ * remoe the css classes and html content for message container 
+ *
+ * @return  {void} 
+ */
 function resetFormMsgContainer() {
     formMsgContainer.innerHTML = ''
     formMsgContainer.classList = ''
 }
 
+/**
+ * bind data and return them as an object
+ *
+ * @return  {object}  
+ */
 function bindIncominData() {
     const firstname = form.querySelector('#firstname')
     const lastname = form.querySelector('#lastname')
@@ -35,6 +57,13 @@ function bindIncominData() {
     }
 }
 
+/**
+ * check for errors and return them if any
+ *
+ * @param   {object}  incomingData  
+ *
+ * @return  {array}                
+ */
 function checkForErrors(incomingData) {
     let errors = []
     if (incomingData.firstname.value == '') errors.push({ msg: "Le prénom est requis." })
@@ -45,6 +74,13 @@ function checkForErrors(incomingData) {
     return errors
 }
 
+/**
+ * insert the html in the dom to display errors to the users
+ *
+ * @param   {array}  errors  
+ *
+ * @return  {void}          
+ */
 function displayFormErrors(errors) {
     let output = ''
     formMsgContainer.classList.add('alert-danger')
@@ -55,6 +91,13 @@ function displayFormErrors(errors) {
     formMsgContainer.innerHTML = output
 }
 
+/**
+ * add html string and classes for success message
+ *
+ * @param   {string}  msg  
+ *
+ * @return  {void}       
+ */
 function displayFormSuccessMsg(msg) {
     formMsgContainer.classList.add('alert-success')
     formMsgContainer.innerHTML = `
@@ -62,6 +105,13 @@ function displayFormSuccessMsg(msg) {
     `
 }
 
+/**
+ * handle contact form submission
+ *
+ * @param   {Event}  e  
+ *
+ * @return  {void}         [return description]
+ */
 submitBtn.addEventListener('click', e => {
     e.preventDefault()
     resetFormMsgContainer()
