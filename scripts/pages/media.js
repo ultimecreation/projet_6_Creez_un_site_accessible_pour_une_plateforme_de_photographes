@@ -82,7 +82,7 @@ async function displayTotalLikesCountByPhotographerId(userId) {
  */
 async function displayData(media) {
     // get the html element and initialize variables
-    const mediaSection = document.querySelector(".media_section");
+    const mediaSection = document.querySelector(".media_section")
     mediaSection.innerHTML = ''
     let output = ''
     let index = 0
@@ -93,20 +93,20 @@ async function displayData(media) {
     // loop through media 
     media.forEach((singleMedia) => {
         const mediaType = typeof singleMedia.image != 'undefined' ? 'image' : 'video'
-        const mediaModel = mediaFactory(singleMedia, mediaType);
-        const mediaCardDOM = mediaModel.getMediaCardDOM(index);
+        const mediaModel = mediaFactory(singleMedia, mediaType)
+        const mediaCardDOM = mediaModel.getMediaCardDOM(index)
 
         // close the current row and open a new one
         if (index > 0 && index % 3 == 0) output += '</div><div class="row">'
 
         // add html string to the output
-        output += mediaCardDOM;
+        output += mediaCardDOM
         index++
-    });
+    })
 
     // add the html string to the dom
     mediaSection.innerHTML = output
-};
+}
 
 /**
  * handle the routine after a click on likes image
@@ -137,22 +137,22 @@ async function handleClicksOnLikeIcons() {
  */
 async function populateLightboxModal(media) {
     // get the html element and initialize variables
-    const lightboxModal = document.querySelector("#lightbox_content");
+    const lightboxModal = document.querySelector("#lightbox_content")
     lightboxModal.innerHTML = ''
     let output = ''
     let index = 0
 
     media.forEach((singleMedia) => {
         const mediaType = typeof singleMedia.image != 'undefined' ? 'image' : 'video'
-        const mediaModel = mediaFactory(singleMedia, mediaType);
-        const mediaCardDOM = mediaModel.getMediaLightboxCardDOM();
-        output += mediaCardDOM;
+        const mediaModel = mediaFactory(singleMedia, mediaType)
+        const mediaCardDOM = mediaModel.getMediaLightboxCardDOM()
+        output += mediaCardDOM
         index++
-    });
+    })
 
     // add the html string to the dom
     lightboxModal.innerHTML = output
-};
+}
 
 /**
  * [async description]
@@ -162,7 +162,7 @@ async function populateLightboxModal(media) {
 async function handleTabOnMediaAfterSortingMedia() {
     // get all tabindexes for media section
     const mediaSection = document.querySelector('.media_section')
-    const clickableMedia = mediaSection.querySelectorAll('[tabindex="4"]');
+    const clickableMedia = mediaSection.querySelectorAll('[tabindex="4"]')
     
     clickableMedia.forEach(single => {
         
@@ -197,12 +197,12 @@ async function handleTabOnMediaAfterSortingMedia() {
 async function init() {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
-    const { media } = await getMediaByPhotographerId(userId);
+    const { media } = await getMediaByPhotographerId(userId)
 
     await displayData(media)
     await populateLightboxModal(media)
     await displayTotalLikesCountByPhotographerId(userId)
     await handleClicksOnLikeIcons()
     await handleTabOnMediaAfterSortingMedia()
-};
+}
 init()

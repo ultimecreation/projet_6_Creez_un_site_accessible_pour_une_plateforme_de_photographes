@@ -1,9 +1,9 @@
 // get html elements
 const form = document.querySelector('#contactForm')
 const formMsgContainer = document.querySelector(`#form-msg-container`)
-const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const emailRegex = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const formCloseBtn = document.querySelector('#closeForm')
-    
+
 /**
  * display the contact modal
  *
@@ -11,12 +11,12 @@ const formCloseBtn = document.querySelector('#closeForm')
  */
 function displayModal() {
     resetFormMsgContainer()
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById("contact_modal")
     const photographerNameInHeader = document.querySelector('.photograph-header h1')
     const photographerNameInModal = document.querySelector('#photographer-name')
-    modal.style.display = "block";
+    modal.style.display = "block"
     document.querySelector('#firstname').focus()
-    
+
     photographerNameInModal.textContent = photographerNameInHeader.textContent
 }
 
@@ -27,8 +27,8 @@ function displayModal() {
  */
 function closeModal() {
     resetFormMsgContainer()
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    const modal = document.getElementById("contact_modal")
+    modal.style.display = "none"
 }
 
 /**
@@ -129,7 +129,7 @@ submitBtn.addEventListener('click', e => {
     // no errors,reset the form inputs and display the success msg 
     form.reset()
     displayFormSuccessMsg('Votre message a été envoyé')
-    console.log({...incomingData})
+    console.log({ ...incomingData })
     setTimeout(() => {
         closeModal()
     }, 3000)
@@ -143,7 +143,7 @@ submitBtn.addEventListener('click', e => {
  */
 formCloseBtn.addEventListener('keyup', e => {
     console.log(e.keyCode)
-    if( e.keyCode === 13 && e.target.tagName === 'IMG'){
+    if (e.keyCode === 13 && e.target.tagName === 'IMG') {
         closeModal()
     }
 })

@@ -8,19 +8,19 @@ const dropdown = document.querySelector('.dropdown-menu')
  *
  * @return  {void}     
  */
-const handleSort =  (e) => {
+const handleSort = (e) => {
     // close light if opened to avoid conflict
-    if(document.querySelector('#lightbox_modal').style.display === 'block'){
+    if (document.querySelector('#lightbox_modal').style.display === 'block') {
         closeLightboxModal()
     }
 
     // set all aria-selected to false
     const liArray = dropdown.querySelectorAll('li')
-    liArray.forEach(li => li.setAttribute('aria-selected',false))
+    liArray.forEach(li => li.setAttribute('aria-selected', false))
 
     // get sortBy value and and set aria-selected to true
     const sortBy = e.target.closest('[data-value]').dataset.value
-    e.target.closest('[data-value]').setAttribute('aria-selected',true)
+    e.target.closest('[data-value]').setAttribute('aria-selected', true)
 
     // get id from url params, fetch and display data related to this id
     const urlParams = new URLSearchParams(window.location.search)
@@ -31,7 +31,7 @@ const handleSort =  (e) => {
             handleTabOnMediaAfterSortingMedia()
         }
     )
-   
+
 }
 
 // EVENT LISTENERS
@@ -39,17 +39,17 @@ dropdown.addEventListener('keyup', e => {
     const lis = dropdown.querySelectorAll('li')
 
     // keyboard enter tab
-    if(e.keyCode === 13){
+    if (e.keyCode === 13) {
         let i = 0
         lis.forEach(li => {
             li.style.display = 'block'
-            if(i === 0){
+            if (i === 0) {
                 li.style.display = 'flex'
             }
         })
-        lis.forEach(li =>{
-            li.addEventListener('keyup', e=> {
-                if(e.keyCode === 13){
+        lis.forEach(li => {
+            li.addEventListener('keyup', e => {
+                if (e.keyCode === 13) {
                     handleSort(e)
                 }
             })
@@ -57,11 +57,11 @@ dropdown.addEventListener('keyup', e => {
     }
 
     // keyboard escape tab
-    if(e.keyCode === 27){
+    if (e.keyCode === 27) {
         const lis = dropdown.querySelectorAll('li:not(:nth-of-type(1))')
         lis.forEach(li => li.style.display = 'none')
     }
-       
+
 })
 dropdown.addEventListener('click', handleSort)
 

@@ -14,17 +14,17 @@
 <body>
     <div class="container">
         <header>
-            <a href="/">
-                <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" tabindex="1"/>
+            <a href="/" tabindex="1">
+                <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
             </a>
         </header>
         <main id="main">
             <header class="photograph-header">
                 <button class="contact_button" onclick="displayModal()" aria-label="Contact Me" tabindex="2">Contactez-moi</button>
             </header>
-            <section class="photographer-filters">
+            <div class="photographer-filters">
                 <div id="listboxlabel" role="button">Trier par</div>
-                <ul class="dropdown-menu" role="listbox" id="listbox1" aria-labelledby="listboxlabel" aria-activedescendant="listbox1-1"  aria-haspopup="listbox" aria-expanded>
+                <ul class="dropdown-menu" role="listbox" id="listbox1" aria-labelledby="listboxlabel" aria-activedescendant="listbox1-1"  aria-haspopup="listbox" aria-expanded="true">
                     <li data-value="likes" role="option" id="listbox1-1" class="selected" aria-selected="false" tabindex="3">
                         <p>Popularité </p><span>></span>
                     </li>
@@ -35,9 +35,9 @@
                         <p>Titre</p>
                     </li>
                 </ul>
-            </section>
-            <section class="media_section"></section>
-            <section class="price-and-likes">
+            </div>
+            <div class="media_section"></div>
+            <div class="price-and-likes">
                 <div class="price-and-likes-container">
                     <div class="total-likes">
                         <span id="total-likes-count">
@@ -49,13 +49,13 @@
                         300€ / jour
                     </div>
                 </div>
-            </section>
+            </div>
         </main>
         <div id="contact_modal" aria-labelledby="contact-text">
             <div class="modal">
                 <header>
                     <div>
-                        <h1 id="contact-text">Contactez-moi<p id="photographer-name"></p></h1>
+                        <h1 id="contact-text">Contactez-moi<span id="photographer-name"></span></h1>
                         
                     </div>
                     <img src="assets/icons/close.svg" id="closeForm" onclick="closeModal()" alt="" aria-label="Close Contact form" tabindex="9" />

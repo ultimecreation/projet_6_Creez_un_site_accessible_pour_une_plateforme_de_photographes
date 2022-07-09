@@ -28,13 +28,13 @@ async function displayBanner(photographer) {
     const contactBtn = document.querySelector('.photograph-header .contact_button')
 
     // get the photographer data,banner infos and image
-    const photographerModel = photographerFactory(photographer);
-    const userBannerInfosDOM = photographerModel.getUserBannerInfosDOM();
-    const userBannerImgDOM = photographerModel.getUserBannerImgDOM();
+    const photographerModel = photographerFactory(photographer)
+    const userBannerInfosDOM = photographerModel.getUserBannerInfosDOM()
+    const userBannerImgDOM = photographerModel.getUserBannerImgDOM()
 
     // insert the content around the contact button
-    photographHeader.insertBefore(userBannerInfosDOM, contactBtn);
-    contactBtn.after(userBannerImgDOM);
+    photographHeader.insertBefore(userBannerInfosDOM, contactBtn)
+    contactBtn.after(userBannerImgDOM)
 }
 
 /**
@@ -52,4 +52,4 @@ async function init() {
     displayBanner(photographer)
 }
 
-init();
+init()

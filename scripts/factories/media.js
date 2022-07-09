@@ -20,8 +20,8 @@ function mediaFactory(data, type) {
  * @return  {object}  
  */
 function ImageMedia(data) {
-    const { id, photographerId, title, image, likes } = data;
-    const mediaPath = `/assets/media/${photographerId}/${image}`;
+    const { id, photographerId, title, image, likes } = data
+    const mediaPath = `/assets/media/${photographerId}/${image}`
 
     /**
      * generate the html for 1 image to be inserted in the dom
@@ -32,22 +32,22 @@ function ImageMedia(data) {
      */
     function getMediaCardDOM(index) {
         const content = `
-           <div class="tabindex" data-index="${index}" tabindex="4">
-            <figure>
-            <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
-            <figcaption>
-                <span>
-                    ${title}
-                </span>
-                <div>
-                    <span class="likes" data-media-id="${id}">${likes} </span>
-                    <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
-                </div>
-            </figcaption>
-        </figure>
-</div>
+            <div class="tabindex" data-index="${index}" tabindex="4" >
+                <figure>
+                    <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})"  aria-label="image closeup view"  loading="lazy">
+                    <figcaption>
+                        <span>
+                            ${title}
+                        </span>
+                        <div>
+                            <span class="likes" data-media-id="${id}">${likes} </span>
+                            <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
         `
-        return content;
+        return content
     }
 
     /**
@@ -58,7 +58,7 @@ function ImageMedia(data) {
     function getMediaLightboxCardDOM() {
         const content = `
             <figure class="lightbox-item">
-                <img src="${mediaPath}" alt="${title}" width=350 height=300 aria-label="${title}">
+                <img src="${mediaPath}" alt="${title}" width=350 height=300 aria-label="${title}"  loading="lazy">
                 <figcaption>
                     <span>
                         ${title}
@@ -67,7 +67,7 @@ function ImageMedia(data) {
                 </figcaption>
             </figure>
         `
-        return content;
+        return content
     }
 
     return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM }
@@ -81,8 +81,8 @@ function ImageMedia(data) {
  * @return  {object}  
  */
 function VideoMedia(data) {
-    const { id, photographerId, title, video, likes } = data;
-    const mediaPath = `assets/media/${photographerId}/${video}`;
+    const { id, photographerId, title, video, likes } = data
+    const mediaPath = `assets/media/${photographerId}/${video}`
 
     /**
      * generate the html for 1 video to be inserted in the dom
@@ -93,22 +93,22 @@ function VideoMedia(data) {
      */
     function getMediaCardDOM(index) {
         const content = `
-        <div class="video tabindex" data-index="${index}" tabindex="4">
-            <div class="video-container">
-                <video class="videos"  height="100%" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
-                    <source src="${mediaPath}#t=0.1" type="video/mp4">
-                </video>
-            </div>
-            <div class="infos">
-                <span>${title}</span>
-                <div>
-                    <span class="likes" data-media-id="${id}">${likes} </span>
-                    <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
+            <div class="video tabindex" data-index="${index}" tabindex="4">
+                <div class="video-container">
+                    <video class="videos" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})"  aria-label="image closeup view">
+                        <source src="${mediaPath}#t=0.1" type="video/mp4">
+                    </video>
+                </div>
+                <div class="infos">
+                    <span>${title}</span>
+                    <div>
+                        <span class="likes" data-media-id="${id}">${likes} </span>
+                        <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
+                    </div>
                 </div>
             </div>
-        </div>
         `
-        return content;
+        return content
     }
 
     /**
@@ -118,18 +118,18 @@ function VideoMedia(data) {
      */
     function getMediaLightboxCardDOM() {
         const content = `
-        <div class="lightbox-item video">
-            <div class="video-container">
-                <video class="videos"  height="100%" controls preload="metadata" aria-label="${title}">
-                    <source src="${mediaPath}#t=0.1" type="video/mp4">
-                </video>
+            <div class="lightbox-item video">
+                <div class="video-container">
+                    <video class="videos" controls preload="metadata" aria-label="${title}">
+                        <source src="${mediaPath}#t=0.1" type="video/mp4">
+                    </video>
+                </div>
+                <div class="infos">
+                    <span>${title}</span>
+                </div>
             </div>
-            <div class="infos">
-                <span>${title}</span>
-            </div>
-        </div>
         `
-        return content;
+        return content
     }
 
     return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM }
