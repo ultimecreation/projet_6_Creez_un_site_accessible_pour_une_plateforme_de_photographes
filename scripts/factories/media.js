@@ -6,10 +6,11 @@
  *
  * @return  {object|Error}   
  */
+// eslint-disable-next-line no-unused-vars
 function mediaFactory(data, type) {
-    if (type === 'video') return new VideoMedia(data)
-    if (type === 'image') return new ImageMedia(data)
-    else throw 'Unknown type'
+	if (type === 'video') return new VideoMedia(data);
+	if (type === 'image') return new ImageMedia(data);
+	else throw 'Unknown type';
 }
 
 /**
@@ -20,19 +21,19 @@ function mediaFactory(data, type) {
  * @return  {object}  
  */
 function ImageMedia(data) {
-    const { id, photographerId, title, image, likes } = data
-    const mediaPath = `/assets/media/${photographerId}/${image}`
+	const { id, photographerId, title, image, likes } = data;
+	const mediaPath = `/assets/media/${photographerId}/${image}`;
 
-    /**
+	/**
      * generate the html for 1 image to be inserted in the dom
      *
      * @param   {integer}  index  current image index to be displayed in the lightbox
      *
      * @return  {string}   
      */
-    function getMediaCardDOM(index) {
-        const content = `
-            <div class="tabindex" data-index="${index}" tabindex="4" >
+	function getMediaCardDOM(index) {
+		const content = `
+            <div class="tabindex" data-index="${index}" tabindex="0" >
                 <figure>
                     <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})"  aria-label="image closeup view"  loading="lazy">
                     <figcaption>
@@ -46,17 +47,17 @@ function ImageMedia(data) {
                     </figcaption>
                 </figure>
             </div>
-        `
-        return content
-    }
+        `;
+		return content;
+	}
 
-    /**
+	/**
      * generate the html string for 1 image to be inserted in the lightbox slideshow
      *
      * @return  {string}  
      */
-    function getMediaLightboxCardDOM() {
-        const content = `
+	function getMediaLightboxCardDOM() {
+		const content = `
             <figure class="lightbox-item">
                 <img src="${mediaPath}" alt="${title}" width=350 height=300 aria-label="${title}"  loading="lazy">
                 <figcaption>
@@ -66,11 +67,11 @@ function ImageMedia(data) {
                    
                 </figcaption>
             </figure>
-        `
-        return content
-    }
+        `;
+		return content;
+	}
 
-    return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM }
+	return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM };
 }
 
 /**
@@ -81,19 +82,19 @@ function ImageMedia(data) {
  * @return  {object}  
  */
 function VideoMedia(data) {
-    const { id, photographerId, title, video, likes } = data
-    const mediaPath = `assets/media/${photographerId}/${video}`
+	const { id, photographerId, title, video, likes } = data;
+	const mediaPath = `assets/media/${photographerId}/${video}`;
 
-    /**
+	/**
      * generate the html for 1 video to be inserted in the dom
      *
      * @param   {integer}  index  current video index to be displayed in the lightbox
      *
      * @return  {string}   
      */
-    function getMediaCardDOM(index) {
-        const content = `
-            <div class="video tabindex" data-index="${index}" tabindex="4">
+	function getMediaCardDOM(index) {
+		const content = `
+            <div class="video tabindex" data-index="${index}" tabindex="0">
                 <div class="video-container">
                     <video class="videos" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})"  aria-label="image closeup view">
                         <source src="${mediaPath}#t=0.1" type="video/mp4">
@@ -107,17 +108,17 @@ function VideoMedia(data) {
                     </div>
                 </div>
             </div>
-        `
-        return content
-    }
+        `;
+		return content;
+	}
 
-    /**
+	/**
      * generate the html string for 1 video to be inserted in the lightbox slideshow
      *
      * @return  {string}  
      */
-    function getMediaLightboxCardDOM() {
-        const content = `
+	function getMediaLightboxCardDOM() {
+		const content = `
             <div class="lightbox-item video">
                 <div class="video-container">
                     <video class="videos" controls preload="metadata" aria-label="${title}">
@@ -128,9 +129,9 @@ function VideoMedia(data) {
                     <span>${title}</span>
                 </div>
             </div>
-        `
-        return content
-    }
+        `;
+		return content;
+	}
 
-    return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM }
+	return { photographerId, title, mediaPath, likes, getMediaCardDOM, getMediaLightboxCardDOM };
 }

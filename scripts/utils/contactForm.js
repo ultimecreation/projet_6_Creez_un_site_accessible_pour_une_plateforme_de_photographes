@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 // get html elements
-const form = document.querySelector('#contactForm')
-const formMsgContainer = document.querySelector(`#form-msg-container`)
-const emailRegex = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-const formCloseBtn = document.querySelector('#closeForm')
+const form = document.querySelector('#contactForm');
+const formMsgContainer = document.querySelector('#form-msg-container');
+const emailRegex = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const formCloseBtn = document.querySelector('#closeForm');
 
 /**
  * display the contact modal
@@ -10,14 +11,14 @@ const formCloseBtn = document.querySelector('#closeForm')
  * @return  {void}  
  */
 function displayModal() {
-    resetFormMsgContainer()
-    const modal = document.getElementById("contact_modal")
-    const photographerNameInHeader = document.querySelector('.photograph-header h1')
-    const photographerNameInModal = document.querySelector('#photographer-name')
-    modal.style.display = "block"
-    document.querySelector('#firstname').focus()
+	resetFormMsgContainer();
+	const modal = document.getElementById('contact_modal');
+	const photographerNameInHeader = document.querySelector('.photograph-header h1');
+	const photographerNameInModal = document.querySelector('#photographer-name');
+	modal.style.display = 'block';
+	document.querySelector('#firstname').focus();
 
-    photographerNameInModal.textContent = photographerNameInHeader.textContent
+	photographerNameInModal.textContent = photographerNameInHeader.textContent;
 }
 
 /**
@@ -26,9 +27,9 @@ function displayModal() {
  * @return  {void}  
  */
 function closeModal() {
-    resetFormMsgContainer()
-    const modal = document.getElementById("contact_modal")
-    modal.style.display = "none"
+	resetFormMsgContainer();
+	const modal = document.getElementById('contact_modal');
+	modal.style.display = 'none';
 }
 
 /**
@@ -37,8 +38,8 @@ function closeModal() {
  * @return  {void} 
  */
 function resetFormMsgContainer() {
-    formMsgContainer.innerHTML = ''
-    formMsgContainer.classList = ''
+	formMsgContainer.innerHTML = '';
+	formMsgContainer.classList = '';
 }
 
 /**
@@ -47,16 +48,16 @@ function resetFormMsgContainer() {
  * @return  {object}  
  */
 function bindIncominData() {
-    const firstname = form.querySelector('#firstname')
-    const lastname = form.querySelector('#lastname')
-    const email = form.querySelector('#email')
-    const message = form.querySelector('#message')
-    return {
-        firstname: firstname.value,
-        lastname: lastname.value,
-        email: email.value,
-        message: message.value,
-    }
+	const firstname = form.querySelector('#firstname');
+	const lastname = form.querySelector('#lastname');
+	const email = form.querySelector('#email');
+	const message = form.querySelector('#message');
+	return {
+		firstname: firstname.value,
+		lastname: lastname.value,
+		email: email.value,
+		message: message.value,
+	};
 }
 
 /**
@@ -67,13 +68,13 @@ function bindIncominData() {
  * @return  {array}                
  */
 function checkForErrors(incomingData) {
-    let errors = []
-    if (incomingData.firstname == '') errors.push({ msg: "Le prénom est requis." })
-    if (incomingData.lastname == '') errors.push({ msg: "Le nom est requi." })
-    if (incomingData.email === '') errors.push({ msg: "L'email est requis" })
-    else if (!incomingData.email.toLowerCase().match(emailRegex)) errors.push({ msg: "L'email n'est pas valide" })
-    if (incomingData.message === '') errors.push({ msg: "Un message est requis." })
-    return errors
+	let errors = [];
+	if (incomingData.firstname == '') errors.push({ msg: 'Le prénom est requis.' });
+	if (incomingData.lastname == '') errors.push({ msg: 'Le nom est requi.' });
+	if (incomingData.email === '') errors.push({ msg: 'L\'email est requis' });
+	else if (!incomingData.email.toLowerCase().match(emailRegex)) errors.push({ msg: 'L\'email n\'est pas valide' });
+	if (incomingData.message === '') errors.push({ msg: 'Un message est requis.' });
+	return errors;
 }
 
 /**
@@ -84,13 +85,13 @@ function checkForErrors(incomingData) {
  * @return  {void}          
  */
 function displayFormErrors(errors) {
-    let output = ''
-    formMsgContainer.classList.add('alert-danger')
-    console.log(errors)
-    errors.forEach(error => {
-        output += `<p>${error.msg}</p>`
-    })
-    formMsgContainer.innerHTML = output
+	let output = '';
+	formMsgContainer.classList.add('alert-danger');
+	console.log(errors);
+	errors.forEach(error => {
+		output += `<p>${error.msg}</p>`;
+	});
+	formMsgContainer.innerHTML = output;
 }
 
 /**
@@ -101,10 +102,10 @@ function displayFormErrors(errors) {
  * @return  {void}       
  */
 function displayFormSuccessMsg(msg) {
-    formMsgContainer.classList.add('alert-success')
-    formMsgContainer.innerHTML = `
+	formMsgContainer.classList.add('alert-success');
+	formMsgContainer.innerHTML = `
         <p>${msg}</p>
-    `
+    `;
 }
 
 /**
@@ -114,26 +115,27 @@ function displayFormSuccessMsg(msg) {
  *
  * @return  {void}         
  */
+// eslint-disable-next-line no-undef
 submitBtn.addEventListener('click', e => {
-    e.preventDefault()
-    resetFormMsgContainer()
-    const incomingData = bindIncominData()
-    const errors = checkForErrors(incomingData)
+	e.preventDefault();
+	resetFormMsgContainer();
+	const incomingData = bindIncominData();
+	const errors = checkForErrors(incomingData);
 
-    // some errors found, display them to the user
-    if (errors.length > 0) {
-        displayFormErrors(errors)
-        return
-    }
+	// some errors found, display them to the user
+	if (errors.length > 0) {
+		displayFormErrors(errors);
+		return;
+	}
 
-    // no errors,reset the form inputs and display the success msg 
-    form.reset()
-    displayFormSuccessMsg('Votre message a été envoyé')
-    console.log({ ...incomingData })
-    setTimeout(() => {
-        closeModal()
-    }, 3000)
-})
+	// no errors,reset the form inputs and display the success msg 
+	form.reset();
+	displayFormSuccessMsg('Votre message a été envoyé');
+	console.log({ ...incomingData });
+	setTimeout(() => {
+		closeModal();
+	}, 3000);
+});
 
 /**
  * close contact form on img using keyboard 
@@ -142,8 +144,8 @@ submitBtn.addEventListener('click', e => {
  * @return  {void}        
  */
 formCloseBtn.addEventListener('keyup', e => {
-    console.log(e.keyCode)
-    if (e.keyCode === 13 && e.target.tagName === 'IMG') {
-        closeModal()
-    }
-})
+	console.log(e.keyCode);
+	if (e.keyCode === 13 && e.target.tagName === 'IMG') {
+		closeModal();
+	}
+});

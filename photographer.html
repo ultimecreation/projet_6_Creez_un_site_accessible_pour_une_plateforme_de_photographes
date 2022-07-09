@@ -6,6 +6,7 @@
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <link href="css/dropdown.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
@@ -14,24 +15,24 @@
 <body>
     <div class="container">
         <header>
-            <a href="/" tabindex="1">
+            <a href="/" tabindex="0">
                 <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
             </a>
         </header>
         <main id="main">
             <header class="photograph-header">
-                <button class="contact_button" onclick="displayModal()" aria-label="Contact Me" tabindex="2">Contactez-moi</button>
+                <button class="contact_button" onclick="displayModal()" aria-label="Contact Me" tabindex="0">Contactez-moi</button>
             </header>
             <div class="photographer-filters">
                 <div id="listboxlabel" role="button">Trier par</div>
                 <ul class="dropdown-menu" role="listbox" id="listbox1" aria-labelledby="listboxlabel" aria-activedescendant="listbox1-1"  aria-haspopup="listbox" aria-expanded="true">
-                    <li data-value="likes" role="option" id="listbox1-1" class="selected" aria-selected="false" tabindex="3">
+                    <li data-value="likes" role="option" id="listbox1-1" class="selected" aria-selected="false" tabindex="0">
                         <p>Popularité </p><span>></span>
                     </li>
-                    <li data-value="date" role="option" id="listbox1-2" class="selected" aria-selected="false" tabindex="3">
+                    <li data-value="date" role="option" id="listbox1-2" class="selected" aria-selected="false" tabindex="0">
                         <p>Date</p>
                     </li>
-                    <li data-value="title" role="option" id="listbox1-3" class="selected" aria-selected="false" tabindex="3">
+                    <li data-value="title" role="option" id="listbox1-3" class="selected" aria-selected="false" tabindex="0">
                         <p>Titre</p>
                     </li>
                 </ul>
@@ -58,40 +59,40 @@
                         <h1 id="contact-text">Contactez-moi<span id="photographer-name"></span></h1>
                         
                     </div>
-                    <img src="assets/icons/close.svg" id="closeForm" onclick="closeModal()" alt="" aria-label="Close Contact form" tabindex="9" />
+                    <img src="assets/icons/close.svg" id="closeForm" onclick="closeModal()" alt="" aria-label="Close Contact form" tabindex="0" />
                 </header>
                 <div id="form-msg-container"></div>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="firstname">Prénom</label>
-                        <input type="text" name="firstname" id="firstname" tabindex="9">
+                        <input type="text" name="firstname" id="firstname" tabindex="0">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Nom</label>
-                        <input type="text" name="lastname" id="lastname" tabindex="9">
+                        <input type="text" name="lastname" id="lastname" tabindex="0">
                     </div>
                     <div class="form-group">
                         <label for="email">email</label>
-                        <input type="text" name="email" id="email" tabindex="9">
+                        <input type="text" name="email" id="email" tabindex="0">
                     </div>
                     <div class="form-group">
                         <label for="message">Votre message</label>
-                        <textarea name="message" id="message" cols="100" rows="10" tabindex="9"></textarea>
+                        <textarea name="message" id="message" cols="100" rows="10" tabindex="0"></textarea>
                     </div>
-                    <button class="contact_button" id="submitBtn" aria-label="Send" tabindex="9">Envoyer</button>
+                    <button class="contact_button" id="submitBtn" aria-label="Send" tabindex="0">Envoyer</button>
                 </form>
             </div>
         </div>
         <div id="lightbox_modal">
-            <a class="prev" onclick="switchSlide(-1)" aria-label="Previous image" tabindex="6" >
+            <a class="prev" onclick="switchSlide(-1)" aria-label="Previous image" tabindex="0" >
                 <img src="/assets/icons/arrow-left.png" alt="Previous image">
             </a>
 
             <div id="lightbox_content"></div>
-            <a class="next" onclick="switchSlide(1)" aria-label="Next image" tabindex="7">
+            <a class="next" onclick="switchSlide(1)" aria-label="Next image" tabindex="0">
                 <img src="/assets/icons/arrow-right.png" alt="Next image">
             </a>
-            <img src="/assets/icons/close-btn.png" alt="close button" class="close-btn"  aria-label="Close dialog"  tabindex="8">
+            <img src="/assets/icons/close-btn.png" alt="close button" class="close-btn"  aria-label="Close dialog"  tabindex="0">
         </div>
     </div>
 
