@@ -2,7 +2,8 @@
 const form = document.querySelector('#contactForm')
 const formMsgContainer = document.querySelector(`#form-msg-container`)
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
+const formCloseBtn = document.querySelector('#closeForm')
+    
 /**
  * display the contact modal
  *
@@ -14,7 +15,8 @@ function displayModal() {
     const photographerNameInHeader = document.querySelector('.photograph-header h1')
     const photographerNameInModal = document.querySelector('#photographer-name')
     modal.style.display = "block";
-    console.log(photographerNameInModal.textContent, photographerNameInHeader.textContent)
+    document.querySelector('#firstname').focus()
+    
     photographerNameInModal.textContent = photographerNameInHeader.textContent
 }
 
@@ -70,7 +72,7 @@ function checkForErrors(incomingData) {
     if (incomingData.lastname.value == '') errors.push({ msg: "Le nom est requi." })
     if (incomingData.email.value === '') errors.push({ msg: "L'email est requis" })
     else if (!incomingData.email.value.toLowerCase().match(emailRegex)) errors.push({ msg: "L'email n'est pas valide" })
-    if (incomingData.message.value === '') errors.push({ msg: "Un messag est requis." })
+    if (incomingData.message.value === '') errors.push({ msg: "Un message est requis." })
     return errors
 }
 
@@ -130,4 +132,11 @@ submitBtn.addEventListener('click', e => {
     setTimeout(() => {
         closeModal()
     }, 3000)
+})
+
+formCloseBtn.addEventListener('keyup', e => {
+    console.log(e.keyCode)
+    if( e.keyCode === 13 && e.target.tagName === 'IMG'){
+        closeModal()
+    }
 })

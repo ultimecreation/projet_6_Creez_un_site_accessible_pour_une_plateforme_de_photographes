@@ -31,6 +31,30 @@ const handleSort = (e) => {
 }
 
 // EVENT LISTENERS
+dropdown.addEventListener('keyup', e => {
+    const lis = dropdown.querySelectorAll('li')
+    if(e.keyCode === 13){
+        let i = 0
+        lis.forEach(li => {
+            li.style.display = 'block'
+            if(i === 0){
+                li.style.display = 'flex'
+            }
+        })
+        lis.forEach(li =>{
+            li.addEventListener('keyup', e=> {
+                if(e.keyCode === 13){
+                    handleSort(e)
+                }
+            })
+        })
+    }
+    if(e.keyCode === 38){
+        const lis = dropdown.querySelectorAll('li:not(:nth-of-type(1))')
+        lis.forEach(li => li.style.display = 'none')
+    }
+    console.log(e.keyCode)      
+})
 dropdown.addEventListener('click', handleSort)
 
 

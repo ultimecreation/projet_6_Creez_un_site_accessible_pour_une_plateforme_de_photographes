@@ -168,5 +168,26 @@ async function init() {
     await populateLightboxModal(media)
     await displayTotalLikesCountByPhotographerId(userId)
     await handleClicksOnLikeIcons()
+    
+    const clickableMedia = document.querySelectorAll('[tabindex="4"]');
+    clickableMedia.forEach(single=> {
+        single.addEventListener('keyup', e => {
+           
+            if(e.keyCode === 13 ){
+                openLightboxModal()
+                currentSlide(parseInt(e.target.dataset.index))
+            }
+            if(e.keyCode === 37 ){
+                switchSlide(-1)
+            }
+            if(e.keyCode === 39 ){
+                switchSlide(1)
+            }
+            if(e.keyCode === 38 ){
+                closeLightboxModal()
+            }
+        })
+    })
+    
 };
 init()

@@ -32,18 +32,20 @@ function ImageMedia(data) {
      */
     function getMediaCardDOM(index) {
         const content = `
-            <figure >
-                <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
-                <figcaption>
-                    <span>
-                        ${title}
-                    </span>
-                    <div>
-                        <span class="likes" data-media-id="${id}">${likes} </span>
-                        <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
-                    </div>
-                </figcaption>
-            </figure>
+           <div class="tabindex" data-index="${index}" tabindex="4">
+            <figure>
+            <img src="${mediaPath}" alt="${title}" width=350 height=300 onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
+            <figcaption>
+                <span>
+                    ${title}
+                </span>
+                <div>
+                    <span class="likes" data-media-id="${id}">${likes} </span>
+                    <img src="assets/icons/heart.png" alt="likes" class="heart-icon"/>
+                </div>
+            </figcaption>
+        </figure>
+</div>
         `
         return content;
     }
@@ -56,7 +58,7 @@ function ImageMedia(data) {
     function getMediaLightboxCardDOM() {
         const content = `
             <figure class="lightbox-item">
-                <img src="${mediaPath}" alt="${title}" width=350 height=300 >
+                <img src="${mediaPath}" alt="${title}" width=350 height=300 aria-label="${title}">
                 <figcaption>
                     <span>
                         ${title}
@@ -91,7 +93,7 @@ function VideoMedia(data) {
      */
     function getMediaCardDOM(index) {
         const content = `
-        <div class="video" >
+        <div class="video tabindex" data-index="${index}" tabindex="4">
             <div class="video-container">
                 <video class="videos"  height="100%" controls preload="metadata" onclick="openLightboxModal();currentSlide(${index})" role="dialog" aria-label="image closeup view">
                     <source src="${mediaPath}#t=0.1" type="video/mp4">

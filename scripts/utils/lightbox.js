@@ -10,6 +10,7 @@ let slideIndex = 0;
  */
 function openLightboxModal() {
     lightbox.style.display = 'block';
+    lightbox.focus()
 }
 
 /**
@@ -68,3 +69,4 @@ showSlides(slideIndex);
 
 // EVENT LISTENERS
 closeBtn.addEventListener('click',closeLightboxModal)
+
