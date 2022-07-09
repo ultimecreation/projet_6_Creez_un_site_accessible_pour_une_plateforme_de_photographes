@@ -308,6 +308,8 @@ form textarea {
     margin: 62px auto !important;
 }
 #lightbox_modal .lightbox-item .infos,#lightbox_modal .lightbox-item figcaption{
+    position: absolute;
+    font-size: 1rem;
    color: #901C1C;
 }
 #lightbox_modal figure {

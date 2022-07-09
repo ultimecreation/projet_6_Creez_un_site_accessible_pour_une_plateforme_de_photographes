@@ -112,7 +112,7 @@ function displayFormSuccessMsg(msg) {
  *
  * @param   {Event}  e  
  *
- * @return  {void}         [return description]
+ * @return  {void}         
  */
 submitBtn.addEventListener('click', e => {
     e.preventDefault()
@@ -134,6 +134,12 @@ submitBtn.addEventListener('click', e => {
     }, 3000)
 })
 
+/**
+ * close contact form on img using keyboard 
+ * @param   {event}  e      
+ *
+ * @return  {void}        
+ */
 formCloseBtn.addEventListener('keyup', e => {
     console.log(e.keyCode)
     if( e.keyCode === 13 && e.target.tagName === 'IMG'){

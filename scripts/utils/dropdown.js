@@ -8,7 +8,7 @@ const dropdown = document.querySelector('.dropdown-menu')
  *
  * @return  {void}     
  */
-const handleSort = (e) => {
+const handleSort =  (e) => {
     // close light if opened to avoid conflict
     if(document.querySelector('#lightbox_modal').style.display === 'block'){
         closeLightboxModal()
@@ -26,13 +26,19 @@ const handleSort = (e) => {
     const urlParams = new URLSearchParams(window.location.search)
     const userId = urlParams.get('id')
     getMediaByPhotographerId(userId, sortBy).then(
-        response => displayData(response)
+        response => {
+            displayData(response)
+            handleTabOnMediaAfterSortingMedia()
+        }
     )
+   
 }
 
 // EVENT LISTENERS
 dropdown.addEventListener('keyup', e => {
     const lis = dropdown.querySelectorAll('li')
+
+    // keyboard enter tab
     if(e.keyCode === 13){
         let i = 0
         lis.forEach(li => {
@@ -49,11 +55,13 @@ dropdown.addEventListener('keyup', e => {
             })
         })
     }
-    if(e.keyCode === 38){
+
+    // keyboard escape tab
+    if(e.keyCode === 27){
         const lis = dropdown.querySelectorAll('li:not(:nth-of-type(1))')
         lis.forEach(li => li.style.display = 'none')
     }
-    console.log(e.keyCode)      
+       
 })
 dropdown.addEventListener('click', handleSort)
 

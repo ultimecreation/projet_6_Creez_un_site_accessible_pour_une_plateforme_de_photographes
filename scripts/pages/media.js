@@ -155,6 +155,41 @@ async function populateLightboxModal(media) {
 };
 
 /**
+ * [async description]
+ *
+ * @return  {[type]}  [return description]
+ */
+async function handleTabOnMediaAfterSortingMedia() {
+    // get all tabindexes for media section
+    const mediaSection = document.querySelector('.media_section')
+    const clickableMedia = mediaSection.querySelectorAll('[tabindex="4"]');
+    
+    clickableMedia.forEach(single => {
+        
+        single.addEventListener('keyup', e => {
+
+            // keyboard enter tab
+            if (e.keyCode === 13) {
+                openLightboxModal()
+                currentSlide(parseInt(e.target.dataset.index))
+            }
+            // keyboard arrow left
+            if (e.keyCode === 37) {
+                switchSlide(-1)
+            }
+             // keyboard arrow right
+            if (e.keyCode === 39) {
+                switchSlide(1)
+            }
+             // keyboard escape tab
+            if (e.keyCode === 27) {
+                closeLightboxModal()
+            }
+        })
+    })
+}
+
+/**
  * initialization
  *
  * @return  {void}  
@@ -168,26 +203,6 @@ async function init() {
     await populateLightboxModal(media)
     await displayTotalLikesCountByPhotographerId(userId)
     await handleClicksOnLikeIcons()
-    
-    const clickableMedia = document.querySelectorAll('[tabindex="4"]');
-    clickableMedia.forEach(single=> {
-        single.addEventListener('keyup', e => {
-           
-            if(e.keyCode === 13 ){
-                openLightboxModal()
-                currentSlide(parseInt(e.target.dataset.index))
-            }
-            if(e.keyCode === 37 ){
-                switchSlide(-1)
-            }
-            if(e.keyCode === 39 ){
-                switchSlide(1)
-            }
-            if(e.keyCode === 38 ){
-                closeLightboxModal()
-            }
-        })
-    })
-    
+    await handleTabOnMediaAfterSortingMedia()
 };
 init()
