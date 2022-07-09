@@ -158,9 +158,9 @@ async function populateLightboxModal(media) {
 }
 
 /**
- * [async description]
+ * handle navigation inside the light using arraows and esc tab
  *
- * @return  {[type]}  [return description]
+ * @return  {void}  [return description]
  */
 async function handleTabOnMediaAfterSortingMedia() {
 	// get all tabindexes for media section
