@@ -54,12 +54,19 @@ function currentSlide(n) {
  */
 function showSlides(n) {
 	const slides = document.querySelectorAll('.lightbox-item');
+
+	// after the last media, show the first one
 	if (n > slides.length - 1) { slideIndex = 0; }
+
+	// before the first media, show the last one
 	if (n < 0) { slideIndex = slides.length - 1; }
+
+	// hide all media
 	for (let i = 0; i < parseInt(slides.length); i++) {
 		slides[i].style.display = 'none';
 	}
 
+	// then show the selected one
 	if (typeof slides[slideIndex] !== 'undefined') {
 		slides[slideIndex].style.display = 'block';
 	}
