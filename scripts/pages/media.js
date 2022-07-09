@@ -57,23 +57,6 @@ async function getMediaByPhotographerId(id, sortBy = null) {
 	});
 }
 
-/**
- * compute and display the total number of likes        
- *
- * @param   {integer}  userId
- *
- * @return  {void} 
- */
-async function displayTotalLikesCountByPhotographerId(userId) {
-	// get all media related to 1 photographer and compute the likes count
-	const { media } = await getMediaByPhotographerId(userId);
-	const totalLikesCount = media.reduce((total, currentMedia) => {
-		return total += currentMedia.likes;
-	}, 0);
-
-	// insert the likes count in the dom
-	document.querySelector('#total-likes-count').textContent = totalLikesCount;
-}
 
 /**
  * insert media in the dom
@@ -128,6 +111,24 @@ async function handleClicksOnLikeIcons() {
 			totalLikesCount.textContent = parseInt(totalLikesCount.textContent) + 1;
 		}
 	});
+}
+
+/**
+ * compute and display the total number of likes        
+ *
+ * @param   {integer}  userId
+ *
+ * @return  {void} 
+ */
+async function displayTotalLikesCountByPhotographerId(userId) {
+	// get all media related to 1 photographer and compute the likes count
+	const { media } = await getMediaByPhotographerId(userId);
+	const totalLikesCount = media.reduce((total, currentMedia) => {
+		return total += currentMedia.likes;
+	}, 0);
+
+	// insert the likes count in the dom
+	document.querySelector('#total-likes-count').textContent = totalLikesCount;
 }
 
 /**

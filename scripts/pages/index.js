@@ -1,5 +1,5 @@
 /**
- * get the photographers data 
+ * fetch the photographers data from json file
  *
  * @return  {[object]}  
  */
@@ -14,7 +14,9 @@ async function getPhotographers() {
 }
 
 /**
- * display the list of photographers
+ * loop through photographers data fetched
+ * and generate the html string
+ * to display the list of photographers
  *
  * @param   {[object]}  photographers  
  *
@@ -43,15 +45,5 @@ async function init() {
 	const { photographers } = await getPhotographers();
 	displayData(photographers);
 }
-
-// async function getMedias() {
-//     // fetch and extract chunk of data from json file
-//     const data = await (await fetch('mydata/photographers.json')).json()
-//     const { media } = data
-
-//     return ({
-//         media: [...media]
-//     })
-// }
 
 init();
