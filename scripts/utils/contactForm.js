@@ -52,10 +52,10 @@ function bindIncominData() {
     const email = form.querySelector('#email')
     const message = form.querySelector('#message')
     return {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        message: message,
+        firstname: firstname.value,
+        lastname: lastname.value,
+        email: email.value,
+        message: message.value,
     }
 }
 
@@ -68,11 +68,11 @@ function bindIncominData() {
  */
 function checkForErrors(incomingData) {
     let errors = []
-    if (incomingData.firstname.value == '') errors.push({ msg: "Le prénom est requis." })
-    if (incomingData.lastname.value == '') errors.push({ msg: "Le nom est requi." })
-    if (incomingData.email.value === '') errors.push({ msg: "L'email est requis" })
-    else if (!incomingData.email.value.toLowerCase().match(emailRegex)) errors.push({ msg: "L'email n'est pas valide" })
-    if (incomingData.message.value === '') errors.push({ msg: "Un message est requis." })
+    if (incomingData.firstname == '') errors.push({ msg: "Le prénom est requis." })
+    if (incomingData.lastname == '') errors.push({ msg: "Le nom est requi." })
+    if (incomingData.email === '') errors.push({ msg: "L'email est requis" })
+    else if (!incomingData.email.toLowerCase().match(emailRegex)) errors.push({ msg: "L'email n'est pas valide" })
+    if (incomingData.message === '') errors.push({ msg: "Un message est requis." })
     return errors
 }
 
@@ -129,6 +129,7 @@ submitBtn.addEventListener('click', e => {
     // no errors,reset the form inputs and display the success msg 
     form.reset()
     displayFormSuccessMsg('Votre message a été envoyé')
+    console.log({...incomingData})
     setTimeout(() => {
         closeModal()
     }, 3000)
