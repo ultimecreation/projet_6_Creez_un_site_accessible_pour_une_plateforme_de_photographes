@@ -144,7 +144,7 @@ submitBtn.addEventListener('click', e => {
  * @return  {void}        
  */
 formCloseBtn.addEventListener('keyup', e => {
-	console.log(e.keyCode);
+	
 	if (e.keyCode === 13 && e.target.tagName === 'IMG') {
 		closeModal();
 	}
