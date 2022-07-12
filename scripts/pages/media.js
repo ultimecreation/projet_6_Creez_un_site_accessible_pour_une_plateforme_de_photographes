@@ -170,7 +170,7 @@ async function handleTabOnMediaAfterSortingMedia() {
 	clickableMedia.forEach(single => {
         
 		single.addEventListener('keyup', e => {
-
+			
 			// keyboard enter tab
 			if (e.keyCode === 13) {
 				// eslint-disable-next-line no-undef

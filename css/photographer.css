@@ -302,6 +302,14 @@ form textarea {
 #lightbox_modal a.next {
     right: 130px;
 }
+#lightbox_modal a.close {
+    position: absolute;
+    top: 55px;
+    right:130px;
+    height: 1.2rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
 
 #lightbox_modal .lightbox-item {
     width: 1050px;
@@ -334,14 +342,14 @@ form textarea {
     overflow: hidden;
 }
 
-#lightbox_modal .close-btn {
+/* #lightbox_modal .close-btn {
     position: absolute;
     top: 62px;
     right: 130px;
     height: 1.2rem;
     width: 1.5rem;
     cursor: pointer;
-}
+} */
 video{
     height:100%;
 }
